@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+	<title>Welcome to Maptime Boston!</title>
+	<link target="_blank" href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	<style>
+
+
+        /*
+                      This template was taken from
+                      https://github.com/maptimeBoston/better-know-a-slippy-map
+
+                      SLIDE STYLES:
+                      All slides are assumed to contain one 'p' element, one
+                      'img' element, or one of each.
+
+                      <div class="slide"> -- Default style. If no image, text
+                        is centered. If image present, it is centered and text
+                        is at the top.  -- Arbitrary content could go here too
+                        (e.g. I used a couple of iframes), but default
+                        behavior will mess with any p or img elements.
+
+                      <div class="slide image_full"> -- Full 1024x768 img,
+                        somewhat faded to black and with bold white text (p)
+                        centered on top.
+
+                      <div class="slide image_bottom"> -- Mostly like default
+                        except that image appears at the bottom. (Basically
+                        just to give more room for longer text).
+                      
+                      Can make additional class styles for p elements and such
+                      if you need different text sizes, colors, etc.  (e.g.
+                      there is a p.title style with a bigger font)
+
+                      img elements themselves are not displayed; rather, their
+                      src attributes are applied as div backgrounds. This is
+                      to make centering easier, basically.  */
+
+		html, body{
+			margin: 0;
+			font: 20px/24px "PT Sans", sans-serif;
+			background-color: #d1c9b8;
+		}
+		.slide, .slide div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1024px;
+			height: 768px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			font-size: 64px;
+			line-height: 72px;
+			font-weight: bold;
+		}
+		.slide{
+			background-color: #d1c9b8;
+			
+		}
+		.slide.image_bottom{
+			background-position: center bottom;
+		}
+		.slide p{
+			position: absolute;
+			text-align: center;
+			margin: 15px 1% 0 1%;
+			width: 98%;
+		}
+		.slide img{
+			display: none;
+		}
+		.slide.image_full{
+			background-color: black;
+		}
+		
+		.slide.image_full div{
+			//opacity: .8;
+		}
+		.slide.image_full p{
+			color: white;
+			text-shadow:0px 0px 10px #000000;
+		}
+		.slide p.title{
+			font-size: 84px;
+			line-height: 94px;
+		}
+
+		.slide.bullets p{
+			text-align: left;
+			margin-left: 5%;
+			width: 90%;
+		}
+
+		.slide.bullets ul{
+			position: absolute;
+			margin-left: 5%;
+			width: 90%;
+		}
+
+		.slide ul.contact{
+			line-height: 52px;
+			font-weight: normal;
+		}
+
+		.slide ul.contact li{
+			margin-top: 20px;
+		}
+
+		.slide ul.contact span{
+			font-size: 48px;
+		}
+
+		a{
+			color: #669;
+			text-decoration: none;
+		}
+
+		a:hover{
+			text-decoration: underline;
+		}
+
+		a.citation{
+			position: absolute;
+			bottom: 5px;
+			right: 5px;
+			color: #000;
+			background-color: rgba(255,255,255,.75);
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		.code{
+			font-family: 'Courier New';
+		}
+	</style>
+</head>
+<body>
+
+<div class="slide">
+  <p>
+  What is Maptime?<br>
+    For more info:<br>
+    <a href="http://www.maptime.io/about/">About Maptime</a>,<br>
+    <a href="http://lyzidiamond.com/posts/why-maptime/">Why Maptime</a><br>
+  </p>
+</div>
+
+<div class="slide bullets">
+  <a class="citation" href="http://lyzidiamond.com/posts/why-maptime/">Why
+    Maptime</a>
+  <p>
+  Maptime is about:</p>
+  <ul>
+  <li>Helping each other</li>
+  <li>Learning from and teaching together</li>
+  <li>Making a safe space for learning</li>
+  <li>Making maps more democratic</li>
+  <li>Bringing the Geo community together</li>
+  <li>Having fun!</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <p>
+  Maptime Boston in Action!<br>David's <a
+    href="http://dmofot.github.io/batop250/">BeerLeaf Map</a>.
+  <br>
+  <a href="http://www.meetup.com/Maptime-Boston/events/188255552/">Meetup
+    comment thread</a>
+  </p>
+</div>
+<div class="slide image_full">
+  <img src="images/beerleaf.jpg"/>
+</div>
+
+<div class="slide">
+  <p class="title">
+  OpenStreetMap - <br>A Gentle Introduction
+  </p>
+</div>
+
+<div class="slide">
+  <p>Follow along. Ask Questions!<br><a target="_blank"
+    href="http://maptimeboston.github.io/osm-101"
+    style="font-size:36px">http://maptimeboston.github.io/osm-101</a>
+  </p>
+  <a class="citation"
+    href="http://github.com/maptimeboston/osm-101">Slides Source
+    Code</a>
+</div>
+
+<div class="slide bullets">
+  <p>
+  The plan:</p>
+  <ul>
+  <li>What is OSM?</li>
+  <li>Why OSM?</li>
+  <li>Howto</li>
+  <li>Let's Edit</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <p class="title">
+  (Part 1/2) OpenStreetMap is a free geographic dataset of natural and
+  man-made features on the Earth's surface
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+  (Part 2/2) OpenStreetMap can be edited by anyone! The dataset has been
+  built by millions of (mostly) volunteers.
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+    Wikipedia of Maps!
+  </p>
+</div>
+
+<div class="slide image_bottom">
+  <img src="images/acadia.jpg"/>
+  <p class="title">
+    Coastlines / Lakes / Rivers
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide image_bottom">
+  <img src="images/roads.jpg"/>
+  <p class="title">
+    Roads
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide image_bottom">
+  <img src="images/train_tracks.jpg"/>
+  <p class="title">
+    Railroad Tracks
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide image_bottom">
+  <img src="images/parks.jpg"/>
+  <p class="title">
+    Parks
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide image_bottom">
+  <img src="images/pois.jpg"/>
+  <p class="title">
+    Stores / POIs
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide">
+  <img src="images/traffic_lights.jpg"/>
+  <p class="title">
+    Traffic Lights
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide">
+  <p class="title">
+    Trees
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide">
+  <p class="title">
+    Trash Cans
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+<div class="slide">
+  <p class="title">
+    Turn Restrictions ("No Left Turn")
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+
+<div class="slide">
+  <p class="title">
+  Lots More! check out: <a
+    href="http://wiki.openstreetmap.org/wiki/Map_features">OSM Map Features</a>
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">
+    Anything verifiable on the ground is okay in OSM
+  </p>
+</div>
+
+
+<div class="slide image_bottom">
+  <img src="images/disney.jpg"/>
+  <p class="title">
+  <a href="http://www.openstreetmap.org/#map=15/28.3768/-81.5552">Disney
+    World</a> (Zoom in)
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+
+<div class="slide image_bottom">
+  <img src="images/karlsruhe.jpg"/>
+  <p class="title">
+  <a href="http://www.openstreetmap.org/#map=15/49.0101/8.4007">Karlsruhe,
+    Germany</a>
+  </p>
+  <a class="citation"
+    href="http://www.openstreetmap.org/copyright">&copy; OpenStreetMap Contributors</a>
+</div>
+
+<!-- Grumpy Cat -->
+<div class="slide image_bottom">
+  <img src="images/grumpy_cat.jpg"/>
+  <p class="title" style="color:white;">
+  So what?
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">Trees? Who cares about trees?</p>
+</div>
+
+<div class="slide image_full">
+  <img src="images/jfh.jpg"/>
+</div>
+
+<!-- Use licensing email -->
+<div class="slide">
+  <p class="title">
+  Getting your hands on proprietary map data (like a road network) costs a lot
+  of money.  </p>
+</div>
+
+<div class="slide">
+  <img src="images/price.jpg"/>
+  <p>Map Pricing</p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  Now anybody can play
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  <a href="http://wheelmap.org">Wheelmap</a>
+  </p>
+</div>
+
+<div class="slide image_bottom">
+  <img src="images/typography.jpg"/>
+  <p><a href="axismaps.com">Axis Maps</a> Typography Map</p>
+</div>
+
+<div class="slide image_bottom">
+  <img src="images/toposm.jpg"/>
+  <p class="title">
+  <a href="http://toposm.ahlzen.com/">TopOSM</a> by Lars
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  Make Your Own! <a href="http://mapbox.com/tilemill">TileMill</a> TileMill2.
+  </p>
+</div>
+
+<div class="slide image_bottom">
+  <img src="images/scoot.jpg"/>
+  <p class="title">
+  <a href="https://www.mapbox.com/blog/launching-smart-directions/">Scoot
+    Navigation</a>
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  <a href="http://hot.openstreetmap.org/">Humanitarian OpenStreetMap Team</a>
+  </p>
+</div>
+
+<div class="slide">
+  <p>
+  <a href="http://telenav.com/">Telenav</a> now using OSM for their navigation
+  app, <a href="http://www.telenav.com/products/tn/">Scout</a>.<br><br><a
+    href="http://www.nytimes.com/2014/06/01/automobiles/mapping-apps-follow-the-crowd.html?_r=0">New
+    York Times article</a>
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  OpenStreetMap is taking over!
+  </p>
+</div>
+
+<div class="slide bullets">
+  <p>In a few years, OSM will be the foundation of</p>
+  <ul>
+  <li>Mapping</li>
+  <li>Navigation</li>
+  <li>Real Estate</li>
+  <li>Fleet Management</li>
+  <li>Insurance</li>
+  <li>Pretty much anything geospatial</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <p class="title">Cool! How do I contribute?</p>
+</div>
+
+<div class="slide bullets">
+  <p>Two main editors</p>
+  <ul>
+    <li>iD : Easier to get started</li>
+    <li><a href="https://josm.openstreetmap.de/">JOSM</a> : More advanced</li>
+  </ul>
+</div>
+
+<div class="slide bullets">
+  <p>Things to focus on today in iD:</p>
+  <ul>
+    <li>Add stores, cafes, etc. Click Point</li>
+    <li>Trace buildings. Click Area</li>
+    <li>Add roads. Click Line</li>
+    <li>Add turn restrictions. Left pane</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <p class="title">Also checkout <a href="maproulette.org">MapRoulette</a></p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  OSM Dos and Don'ts
+  </p>
+</div>
+
+<div class="slide image_full">
+  <img src="images/attribution2.jpg"/>
+  <p class="title" style="color:black;text-shadow:none">
+  Must: Provide attribution if you display OSM data
+  </p>
+</div>
+<div class="slide">
+  <p>"&copy; OpenStreetMap Contributors" and<br>
+  link to license <a
+    href="https://www.openstreetmap.org/copyright">openstreetmap.org/copyright</a></p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  Don't: Copy data from other maps (Google, Bing, etc.)
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+  Do: Read <a href="http://wiki.openstreetmap.org/wiki/Good_practice">Good
+    Practice</a>
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+  Don't: Delete a bunch of data unless it's incorrect. Contact the
+  original contributor.
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+  Do: Ask questions. Don't: Guess.
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+  Be Careful: "Mixing" OSM with other datasets. Read <a
+    href="http://opendatacommons.org/licenses/odbl/">ODbL</a>. Could trigger
+  sharealike. Generally, displaying things on top of OSM is okay.
+  </p>
+</div>
+<div class="slide">
+  <p class>
+  Do: Watch your changes go live on <a
+    href="http://openstreetmap.org">openstreetmap.org</a>. Takes a few
+  minutes.
+  </p>
+</div>
+<div class="slide">
+  <p class="title">
+  Must: Have fun!!!
+  </p>
+</div>
+
+<div class="slide">
+  <p class="title">
+  Where to get OSM data
+  </p>
+</div>
+<div class="slide">
+  <p>
+  <a
+    href="http://wiki.openstreetmap.org/wiki/Download">openstreetmap.org download</a>
+  </p>
+</div>
+<div class="slide">
+  <p>
+  Mapzen <a href="https://mapzen.com/metro-extracts">metro extracts</a><br>
+  Available in multiple formats including GeoJSON. Download small file, unzip, and drag to <a href="http://geojson.io">geojson.io</a>
+  </p>
+</div>
+
+<div class="slide">
+  <p>Want more? Join<br>
+  <a href="http://www.meetup.com/OpenStreetMap-Boston/">OpenStreetMap
+    Boston</a>.<br>
+  OSM 201: July 29. Sign up!
+  </p>
+</div>
+
+<div class="slide">
+  <p>Want more?<br>
+  <a href="http://www.meetup.com/avidgeo/">Avid Geo Project Night</a>.<br>
+  Tomorrow night @ Hack/Reduce.
+  </p>
+</div>
+
+<script>
+	// The following is mostly derived from https://github.com/tmcw/big
+
+	var slides = document.getElementsByClassName("slide"),
+		current = 0;
+
+	function go(n){
+		current = n;
+		var slide = slides[n],
+			classes = slide.className.split(" ");
+		for (var i = 0; i < slides.length; i++) slides[i].style.display = 'none';
+		slide.style.display = 'block';
+
+	slide.style.left = (window.innerWidth - slide.offsetWidth) / 2 + "px";
+	slide.style.top = (window.innerHeight - slide.offsetHeight) / 2 + "px";
+
+		if ( classes[1] && styleSlide[classes[1]] ) styleSlide[classes[1]](slide);
+		else styleSlide.normal(slide);
+		resize();
+
+		if (window.location.hash !== n) window.location.hash = n;
+	}
+
+	var styleSlide = {
+		heading: function(slide){
+			var p = slide.getElementsByTagName("p")[0];
+			p.style.marginTop = (slide.offsetHeight - p.offsetHeight) / 2 + "px";
+		},
+
+		img: function(slide){
+			var img = slide.getElementsByTagName("img")[0];
+	        slide.style.backgroundImage = 'url(' + img.src + ')';
+	        img.style.display = 'none';
+		},
+
+		image_full: function(slide){
+			var img = slide.getElementsByTagName("img")[0];
+			var p = slide.getElementsByTagName("p")[0];
+			var div = slide.getElementsByTagName("div")[0] || document.createElement("div");
+			div.style.backgroundImage = 'url(' + img.src + ')';
+			slide.insertBefore(div,p);
+	        img.style.display = 'none';
+			p.style.marginTop = (slide.offsetHeight - p.offsetHeight) / 2 + "px";
+		},
+
+		img_top: function(slide){
+			var img = slide.getElementsByTagName("img")[0];
+	        slide.style.backgroundImage = 'url(' + img.src + ')';
+	        img.style.display = 'none';
+		},
+
+		img_bottom: function(slide){
+			var img = slide.getElementsByTagName("img")[0];
+	        slide.style.backgroundImage = 'url(' + img.src + ')';
+	        img.style.display = 'none';
+		},
+
+		normal: function(slide){
+			var img = slide.getElementsByTagName("img")[0];
+			var p = slide.getElementsByTagName("p")[0];
+
+			if ( img ){
+				slide.style.backgroundImage = 'url(' + img.src + ')';
+			} else {
+				if ( p ){
+					p.style.marginTop = (slide.offsetHeight - p.offsetHeight) / 2 + "px";
+				}
+			}
+		},
+
+		bullets: function(slide){
+			var p = slide.getElementsByTagName("p")[0];
+			var ul = slide.getElementsByTagName("ul")[0];
+			ul.style.marginTop = (slide.offsetHeight - ul.offsetHeight) / 2 + "px";
+			if ( p ){
+				p.style.marginTop = (slide.offsetHeight - ul.offsetHeight) / 2 - p.offsetHeight + "px";
+			}
+		}
+	}
+
+	document.onclick = function() { go(++current % (slides.length)); };
+    function fwd() { go(Math.min(slides.length - 1, ++current)); }
+    function rev() { go(Math.max(0, --current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+
+    function parse_hash() {
+        return Math.max(Math.min(slides.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) current = parse_hash() || current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== current) go(c);
+    };
+    window.onresize = resize;
+
+    function resize(){
+    	var s = Math.min( 1, Math.min( window.innerHeight / 768, window.innerWidth / 1024 ) );
+    		slides[current].style.webkitTransform = "scale(" + s + "," + s +")";
+			slides[current].style.MozTransform = "scale(" + s + "," + s +")";
+			slides[current].style.msTransform = "scale(" + s + "," + s +")";
+			slides[current].style.transform = "scale(" + s + "," + s +")";
+    }
+    go(current);
+</script>
+
+</body>
+</html>
